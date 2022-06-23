@@ -1,6 +1,6 @@
 import { NavItem } from '@vuepress/types'
 import { getOptions } from './defaultConfig'
-import { getCurDirs, getMdFiles } from './utils/fileHelper';
+import { getCurDirs, getMdFiles, createREADME } from './utils/fileHelper';
 
 
 const getNav = (path: string, depth: number, prefix='/'): NavItem[] => {
@@ -30,6 +30,8 @@ const getNav = (path: string, depth: number, prefix='/'): NavItem[] => {
 				link: item
 			})
 		})
+		
+		createREADME(path)
 	}
   return arr;
 }
