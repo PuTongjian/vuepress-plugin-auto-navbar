@@ -1,6 +1,6 @@
 {
   "name": "@magicpocket/vuepress-plugin-auto-navbar",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "自动生成vuepress导航栏，适用于vuepressv2.0.0",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
