@@ -1,6 +1,7 @@
 import path from 'path'
-import { readdirSync, statSync} from 'fs'
-import { getOptions } from '../defaultConfig';
+import { readdirSync, statSync, writeFileSync} from 'fs'
+import { getOptions } from '../defaultConfig'
+import Template from './stringTemplate'
 
 
 
@@ -52,6 +53,32 @@ const getCurDirs = (dir = "."): string[] => {
 }
 
 /**
+ * @description: 生成目录README.md
+ * @param {string} dir 文件目录
+ * @return {*}
+ */
+const createREADME = (dir: string) => {
+	const options = getOptions()
+	// 获取md文件列表
+	const configs = {
+		files: getCurFiles(dir, ['md'], options.ignoreFiles),
+		folders: getCurDirs(dir).map(item => {
+			return {
+				title: item.substring(item.lastIndexOf('/') + 1),
+				link: item.replace(dir, '.'),
+				items: getCurFiles(item, ['md'], options.ignoreFiles) || []
+			}
+		})
+	}
+	// 生成文件内容
+	const content = Template.READMETemplate(configs, dir.substring(dir.lastIndexOf('/') + 1))
+	// 文件路径
+	const file = path.join(dir, './README.md')
+	// 写入文件
+	writeFileSync(file, content)
+}
+
+/**
  * @description: 获取子目录文件
  * @param {string} path 目录路径
  * @param {string} prefix 文件前缀
@@ -64,7 +91,7 @@ const getMdFiles = (path: string, prefix = '') => {
 }
 
 export {
-	// getCurFiles,
 	getCurDirs,
-	getMdFiles
+	getMdFiles,
+	createREADME
 }
