@@ -31,7 +31,6 @@ const getNav = (path: string, depth: number, prefix='/'): NavItem[] => {
 			})
 		})
 	}
-	console.log(arr)
   return arr;
 }
 
