@@ -1,4 +1,4 @@
-import { Options } from '../types/custom'
+import { Options } from './custom'
 
 let defaultOptions: Options = {
 	subNavShow: [],
@@ -7,7 +7,7 @@ let defaultOptions: Options = {
 	dirPrefix : '📂  ',
 	filePrefix :'✏️  ',
 	useREADME: true,
-	deep:2,
+	deep: 2,
 	childrenKey:'children'
 }
 

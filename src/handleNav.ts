@@ -1,14 +1,11 @@
-import { NavItem } from '@vuepress/types'
 import { getOptions } from './defaultConfig'
-import { getCurDirs, getMdFiles, createREADME } from './utils/fileHelper';
+import { getCurDirs, getMdFiles, createREADME } from './utils/fileHelper'
 
 
-const getNav = (path: string, depth: number, prefix='/'): NavItem[] => {
+const getNav = (path: string, depth: number, prefix='/'): any[] => {
 	const options = getOptions()
-	const arr: NavItem[] = []
-	depth
-	prefix
-	options
+	const arr: any[] = []
+
 	getCurDirs(path).sort().forEach((dir: string) => {
 		const text = dir.substring(dir.lastIndexOf('/') + 1)
 		const link = prefix + text + '/'
@@ -16,7 +13,7 @@ const getNav = (path: string, depth: number, prefix='/'): NavItem[] => {
 		arr.push({
 			text: `${options.dirPrefix}${text}`,
 			link: options.useREADME ? link : (subNav[0]?.link ?? link),
-			[options.childrenKey]: (depth === 0 || options.subNavShow.includes(text)) ? subNav : []
+			[options.childrenKey]: (depth < options.deep || options.subNavShow.includes(text)) ? subNav : []
 		})
 	})
 	// 获取当前目录的文件
@@ -25,19 +22,13 @@ const getNav = (path: string, depth: number, prefix='/'): NavItem[] => {
 		files.sort().
 		filter((item => !options.ignoreFiles.includes(item.substring(item.lastIndexOf('/') + 1, item.lastIndexOf('.'))))).
 		forEach((item) => {
-			arr.push({
-				text: `${options.filePrefix}${item.substring(item.lastIndexOf('/') + 1, item.lastIndexOf('.'))}`,
-				link: item
-			})
+			arr.push(item)
 		})
 		
 		createREADME(path)
 	}
-  return arr;
+	return arr
 }
-
-getNav('../code-drying-plan', 0)
-
 
 
 export { 

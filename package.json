@@ -1,6 +1,6 @@
 {
   "name": "@magicpocket/vuepress-plugin-auto-navbar",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "自动生成vuepress导航栏，适用于vuepressv2.0.0",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
@@ -16,15 +16,14 @@
     "vuepress-plugin"
   ],
   "author": "putongjian",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/PuTongjian/vuepress-plugin-auto-navbar.git"
-	},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PuTongjian/vuepress-plugin-auto-navbar.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@types/node": "*",
-    "@vuepress/types": "^1.9.7",
     "rollup": "^2.75.7",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.32.1",
