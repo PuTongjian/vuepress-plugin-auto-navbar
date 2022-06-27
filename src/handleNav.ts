@@ -1,5 +1,5 @@
 import { getOptions } from './defaultConfig'
-import { getCurDirs, getMdFiles, createREADME } from './utils/fileHelper'
+import { getCurDirs, getMdFiles } from './utils/fileHelper'
 
 
 const getNav = (path: string, depth: number, prefix='/'): any[] => {
@@ -25,7 +25,7 @@ const getNav = (path: string, depth: number, prefix='/'): any[] => {
 			arr.push(item)
 		})
 		
-		createREADME(path)
+		// createREADME(path)
 	}
 	return arr
 }
